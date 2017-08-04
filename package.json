@@ -1,0 +1,14 @@
+{
+  "name": "json-discord-bot",
+  "version": "0.0.1",
+  "description": "A discord bot made almost entirely in JSON",
+  "main": "main.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "author": "BlackBird",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.1.0"
+  }
+}

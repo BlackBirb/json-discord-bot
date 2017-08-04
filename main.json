@@ -1,0 +1,3 @@
+{
+    "init": "self.config = require('./config.json'); let DiscordJS = require(\"discord.js\"); self.client = new DiscordJS.Client(); self.client.on(\"message\", msg => msg.content.startsWith(self.config.prefix) ? msg.reply(\"Beep!\") : '' ); self.client.login(self.config.token)"
+}
