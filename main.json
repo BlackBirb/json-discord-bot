@@ -1,3 +1,10 @@
 {
-    "init": "self.config = require('./config.json'); let DiscordJS = require(\"discord.js\"); self.client = new DiscordJS.Client(); self.client.on(\"message\", msg => msg.content.startsWith(self.config.prefix) ? msg.reply(\"Beep!\") : '' ); self.client.login(self.config.token)"
+    "init": "self.config = require('./config.json'); let DiscordJS = require(\"discord.js\"); self.client = new DiscordJS.Client(); self.client.login(self.config.token); for(const service in self.src.main.run){ let target = eval(self.src.main.run[service]); target.runs.forEach(e => eval(target[e]))}",
+    "run": {
+        "commandHandler": "self.src.cmd"
+    },
+    "src": {
+        "main": "main.json",
+        "cmd": "src/commandHandler.json"
+    }
 }
