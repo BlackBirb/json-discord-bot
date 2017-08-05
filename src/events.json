@@ -1,0 +1,5 @@
+{
+    "init": "self.client.on('message', message => {self.src.events.msgTO.forEach(t => eval(t)(message))})",
+    "run": ["init"],
+    "msgTO": ["self.cmdHandler"]
+}

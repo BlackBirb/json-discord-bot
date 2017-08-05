@@ -1,5 +1,0 @@
-{
-    "init": "self.cmdHandler = (msg) => {/*idk lol*/}",
-    "runs": ["init", "isCommand"],
-    "isCommand": "self.cmdHandler.isCommand = msg => {if(!msg.content.startsWith(self.config.prefix)) return false;if(msg.author.bot) return false;let args = msg.content.slice(self.config.prefix.length).split(' ');return [true, args];}"
-}

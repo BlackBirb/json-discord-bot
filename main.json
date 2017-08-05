@@ -1,10 +1,14 @@
 {
-    "init": "self.config = require('./config.json'); let DiscordJS = require(\"discord.js\"); self.client = new DiscordJS.Client(); self.client.login(self.config.token); for(const service in self.src.main.run){ let target = eval(self.src.main.run[service]); target.runs.forEach(e => eval(target[e]))}",
+    "init": "self.config = require('./config.json'); let DiscordJS = require(\"discord.js\"); self.client = new DiscordJS.Client(); self.client.login(self.config.token); for(const service in self.src.main.run){ let target = eval(self.src.main.run[service]); target.run.forEach(e => eval(target[e]))}",
     "run": {
-        "commandHandler": "self.src.cmd"
+        "commands": "self.src.cmd",
+        "events": "self.src.events",
+        "registry": "self.src.registry"
     },
     "src": {
         "main": "main.json",
-        "cmd": "src/commandHandler.json"
+        "cmd": "src/cmd.json",
+        "events": "src/events.json",
+        "registry": "src/registry.json"
     }
 }

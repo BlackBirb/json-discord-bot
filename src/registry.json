@@ -1,0 +1,6 @@
+{
+    "run": ["init", "addCMDS","requireCommands"],
+    "init": "self.registry = name => {name = name.toLowerCase(); if(!self.registry.commands.has(name)) return false; return self.registry.commands.get(name)}",
+    "addCMDS": "self.registry.commands = new Map(); self.registry.add = function(command) {self.registry.commands.set(command.name.toLowerCase(), command)} ",
+    "requireCommands": "require('fs').readdir('./src/commands', (err, files) => { if(err) throw err; files.forEach(c => self.registry.add(require('./src/commands/'+c)))})"
+}
