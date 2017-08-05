@@ -1,5 +1,5 @@
 {
-    "init": "self.cmdHandler = (msg) => {let isCMD = self.cmdHandler.isCommand(msg); if(!isCMD[0] || isCMD[1].length <= 0) return; let cmd = self.registry(isCMD[1]); if(!cmd) return; new Function('msg','suffix', cmd.run)(msg, isCMD[2])}",
+    "init": "self.cmdHandler = (msg) => {let isCMD = self.cmdHandler.isCommand(msg); if(!isCMD[0] || isCMD[1].length <= 0) return; let cmd = self.registry(isCMD[1]); if(!cmd) return msg.reply('I can\\'t find this command in any json. It probably doesn\\'t exists'); let req = []; if(cmd.requires) cmd.requires.forEach(r => req.push(require(r))) ;new Function('msg','suffix', 'req', cmd.run)(msg, isCMD[2], req)}",
     "run": ["init", "isCommand"],
-    "isCommand": "self.cmdHandler.isCommand = msg => {if(!msg.content.startsWith(self.config.prefix)) return [false];if(msg.author.bot) return [false, null];let args = msg.content.slice(self.config.prefix.length).split(' ');return [true, args[0], args.slice(1)];}"
+    "isCommand": "self.cmdHandler.isCommand = msg => {if(!msg.content.startsWith(self.config.prefix)) return [false];if(msg.author.bot) return [false, null];let args = msg.content.slice(self.config.prefix.length).split(' ');return [true, args[0], args.slice(1).length === 0 ? null : args.slice(1)];}"
 }

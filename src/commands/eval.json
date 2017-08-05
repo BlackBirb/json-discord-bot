@@ -1,0 +1,5 @@
+{
+    "name": "eval",
+    "requires": ["util"],
+    "run": "if(suffix === null) return; let ins = req[0].inspect;let evalved; try { evalved = eval(suffix.join(' '));} catch(err) { evalved = \"ERROR: \"+ err.message}; let res = evalved; if(typeof evalved != 'string') res = ins(evalved, { depth: 0 }); if(res.toString().length > 1500) res = res.substring(0,1500); msg.reply(res.toString(), {code: \"js\"})"
+}

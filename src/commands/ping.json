@@ -1,4 +1,4 @@
 {
     "name": "ping",
-    "run": "msg.reply('pong! ' + suffix)"
+    "run": "msg.reply('pong! ' + (suffix != null ? suffix.join(' ') : ''))"
 }
